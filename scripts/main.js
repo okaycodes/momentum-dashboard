@@ -1,11 +1,19 @@
 
 const bodyEl = document.getElementById('body')
 const timeEl = document.getElementById('time-data')
+const inputEl = document.getElementById('input')
 const coinIdEl = document.getElementById('coin-id')
+const weatherEl = document.getElementById('weather')
 const coinImgEl = document.getElementById('coin-img')
 const dogecoinEl = document.getElementById('dogecoin-data')
 const bgCreatorEl = document.getElementById('bg-creator')
 const bgLocationEl = document.getElementById('bg-location')
+const weatherIconEl = document.getElementById('weather-icon')
+const weatherLocationEl = document.getElementById('weather-location')
+let weatherLocation = "Lagos"
+
+
+
 
 function getBackground(){
   fetch("https://apis.scrimba.ocom/unsplash/photos/random?orientation=landscape&query=nature")
@@ -16,7 +24,7 @@ function getBackground(){
       img.src =  url
       img.onload = function () {
           bodyEl.style.backgroundImage = `url(${url})`
-          bgCreatorEl.textContent = `By: ${data.user.name}`
+          bgCreatorEl.textContent = `Pic by: ${data.user.name}`
           bgLocationEl.textContent = `Location: ${data.location.name}`
           getCoin()
       }
@@ -27,7 +35,7 @@ function getBackground(){
       img.src =  url
       img.onload = function () {
           bodyEl.style.backgroundImage = `url(${url})`
-          bgCreatorEl.textContent = `By: Karsten Würth`
+          bgCreatorEl.textContent = `Pic by: Karsten Würth`
           bgLocationEl.textContent = `Location: Alsheim, Germany`
           getCoin()
       }
@@ -59,16 +67,39 @@ async function getCoin(){
 function currentTime(){
   date = new Date()
   let time = document.createElement('p')
-  let input = document.createElement('input')
-  let line = document.createElement('hr')
   time.textContent = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
-  input.placeholder = "Enter Weather Location e.g. Lagos, New York"
+  input.classList.add('input')
   timeEl.appendChild(time)
-  timeEl.appendChild(input)
-  // timeEl.appendChild(line)
 }
 
+function getWeather(){
+  fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?q=${weatherLocation}&units=metric`)
+      .then(response => response.json())
+      .then(data=>{
+        let img = new Image()
+        let input = document.createElement('input')
+        let weatherLocationEl = document.createElement(p)
+        let weatherDescriptionEl =  document.createElement('p')
+        let temperatureEl = `<p class="temp">${Math.floor(data.main.temp)}<sup>o</sup>C`
+        input.placeholder = "Enter Weather Location e.g. Lagos, New York"
+        weatherDescriptionEl.textContent =  data.weather[0].description
+        img.src = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`
+        img.onload = function(){
+          weatherIconEl.innerHTML = temperatureEl
+          weatherIconEl.appendChild(img)
+          weatherEl.appendChild(weatherDescriptionEl)
+        }
+      }).catch (error => {
+        console.log(error)
+      })
+}
 
-fetch("https://apis.scrimba.com/openweathermap/data/2.5/weather?q=Lagos&units=imperial")
-    .then(response => response.json())
-    .then(data=>{console.log(data)})
+getWeather()
+
+
+document.addEventListener('keypress', function(event){
+  if(event.keyCode === 13 && inputEl.value>1){
+    location = inputEl.value
+    getWeather()
+  }
+  })
