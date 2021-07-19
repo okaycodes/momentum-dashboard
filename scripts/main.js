@@ -6,10 +6,12 @@ const coinIdEl = document.getElementById('coin-id')
 const weatherEl = document.getElementById('weather')
 const coinImgEl = document.getElementById('coin-img')
 const dogecoinEl = document.getElementById('dogecoin-data')
+const settingsEl = document.getElementById('settings')
 const bgCreatorEl = document.getElementById('bg-creator')
 const bgLocationEl = document.getElementById('bg-location')
 const weatherIconEl = document.getElementById('weather-icon')
 const weatherLocationEl = document.getElementById('weather-location')
+const weatherDescriptionEl = document.getElementById('weather-desc')
 let weatherLocation = "Lagos"
 
 
@@ -76,30 +78,50 @@ function getWeather(){
   fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?q=${weatherLocation}&units=metric`)
       .then(response => response.json())
       .then(data=>{
+
         let img = new Image()
-        let input = document.createElement('input')
-        let weatherLocationEl = document.createElement(p)
-        let weatherDescriptionEl =  document.createElement('p')
-        let temperatureEl = `<p class="temp">${Math.floor(data.main.temp)}<sup>o</sup>C`
-        input.placeholder = "Enter Weather Location e.g. Lagos, New York"
-        weatherDescriptionEl.textContent =  data.weather[0].description
+        let currentLocation = document.createElement('p')
+        let tempEl = document.createElement('p')
         img.src = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`
+        tempEl.innerHTML = `<p class="temp">${Math.floor(data.main.temp)}<sup>o</sup>C</p>`
         img.onload = function(){
-          weatherIconEl.innerHTML = temperatureEl
+          weatherIconEl.innerHTML = ""
           weatherIconEl.appendChild(img)
-          weatherEl.appendChild(weatherDescriptionEl)
+          weatherIconEl.appendChild(tempEl)
+          weatherLocationEl.textContent = `Location: ${weatherLocation}`
+          weatherDescriptionEl.textContent =  data.weather[0].description
         }
-      }).catch (error => {
-        console.log(error)
       })
 }
 
 getWeather()
 
 
+settingsEl.addEventListener('click', function(){
+  if(inputEl.style.display === "none"){
+    inputEl.style.display = "block"
+    hideBar()
+  }else{
+    inputEl.style.display = "none"
+  }
+})
+
 document.addEventListener('keypress', function(event){
-  if(event.keyCode === 13 && inputEl.value>1){
-    location = inputEl.value
+  if(event.keyCode === 13){
+    console.log('keypressed')
+    weatherLocation = inputEl.value
+    inputEl.value = ""
+    inputEl.style.display = "none"
     getWeather()
   }
+})
+
+function hideBar(){
+  document.addEventListener('click', function(event){
+    let isClicked = inputEl.contains(event.target)
+    let settingsIsClicked = settingsEl.contains(event.target)
+    if(!isClicked && !settingsIsClicked){
+      inputEl.style.display = "none"
+    }
   })
+}
