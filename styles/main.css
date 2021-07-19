@@ -10,7 +10,7 @@ body{
   color: white;
   font-weight: 300;
   font-family: sans-serif;
-  line-height: 1.5;
+  line-height: 1.0;
   text-shadow: 0px 0px 7px black;
   margin: auto;
   background-repeat: no-repeat;
@@ -20,7 +20,7 @@ body{
 }
 
 p{
-  margin:0;
+  margin: 0;
 }
 
 
@@ -30,6 +30,10 @@ ul{
   list-style: none;
   padding-left: 0;
   font-weight: 400;
+}
+
+li{
+  margin-bottom: 0.5em;
 }
 
 img{
@@ -50,6 +54,7 @@ img{
   font-size: 0.8rem;
   display: flex;
   align-items: center;
+  margin-bottom: 0.5em;
 }
 
 .bg-data{
@@ -71,13 +76,15 @@ img{
 
 
 input{
+  width: 85%;
+  display: none;
   color: #f0f0f0;
   margin-top: 0;
-  padding: 10px;
+  padding: 3px;
   text-align: center;
   background-color: inherit;
   border: none;
-  border-bottom: solid 4px grey;
+  border-bottom: solid 2px grey;
   border-radius: 5px;
   /* background-color: rgba(128, 128, 128, 0.1); */
 }
@@ -102,13 +109,13 @@ input:focus{
   justify-content: flex-start;
 }
 
-
-#weather p{
-  margin: 0;
+#weather-icon{
+  display: flex;
+  align-items: center;
 }
 
 #weather-icon p{
-  margin-right: 10px;
+  margin-bottom: 3px;
 }
 
 #weather-icon img{
@@ -116,6 +123,17 @@ input:focus{
   margin: 0;
 }
 
-#weather-icon{
+.weather-settings{
   display: flex;
+}
+
+#settings{
+  padding: 0 2px;
+  background-color: rgba(128, 128, 128, 0.4);
+  border-radius: 2px;
+  box-shadow: 0 0 2px;
+}
+
+#settings:hover{
+  cursor: pointer;
 }
