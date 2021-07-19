@@ -12,6 +12,7 @@ body{
   font-weight: 300;
   font-family: sans-serif;
   line-height: 1.5;
+  text-shadow: 0px 0px 7px black;
   margin: auto;
   background-repeat: no-repeat;
   background-size: cover;
@@ -26,10 +27,14 @@ ul{
   list-style: none;
   padding-left: 0;
   font-weight: 600;
-  text-shadow: 0px 0px 7px black;
 }
 
 img{
   display: block;
   margin-bottom: 0;
+}
+
+.flex-coin{
+  display: flex;
+  align-items: center;
 }
