@@ -19,3 +19,16 @@ body{
   padding: 2em;
   height: 100vh;
 }
+
+
+ul{
+  margin-top: 0;
+  list-style: none;
+  padding-left: 0;
+  font-weight: 600;
+}
+
+img{
+  display: block;
+  margin-bottom: 0;
+}
