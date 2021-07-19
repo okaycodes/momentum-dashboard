@@ -18,7 +18,7 @@ let weatherLocation = "Lagos"
 
 
 function getBackground(){
-  fetch("https://apis.scrimba.ocom/unsplash/photos/random?orientation=landscape&query=nature")
+  fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
     .then(response => response.json())
     .then(data => {
       const url = data.urls.full
@@ -70,7 +70,6 @@ function currentTime(){
   date = new Date()
   let time = document.createElement('p')
   time.textContent = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
-  input.classList.add('input')
   timeEl.appendChild(time)
 }
 
