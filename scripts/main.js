@@ -5,22 +5,23 @@ const coinIdEl = document.getElementById('coin-id')
 const coinImgEl = document.getElementById('coin-img')
 const dogecoinEl = document.getElementById('dogecoin-data')
 const bgCreatorEl = document.getElementById('bg-creator')
+const bgLocationEl = document.getElementById('bg-location')
 
 async function getBackground(){
   const response = await fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
   const data = await response.json()
-  const url = data.urls.raw
-  const creator = `By: ${data.user.name}`
+  const url = data.urls.full
   const img = new Image()
   img.src =  url
   img.onload = function () {
       bodyEl.style.backgroundImage = `url(${url})`
-      bgCreatorEl.textContent = creator
+      bgCreatorEl.textContent = `By: ${data.user.name}`
+      bgLocationEl.textContent = `Location ${data.location.name}`
       getCoin()
   }
 }
 // let interval = setInterval (getBackground, 8000)
-setTimeout(getBackground, 8000)
+setTimeout(getBackground, 800)
 
 
 async function getCoin(){

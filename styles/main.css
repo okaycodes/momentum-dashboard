@@ -21,6 +21,10 @@ body{
   height: 100vh;
 }
 
+p{
+  margin:0;
+}
+
 
 ul{
   margin-top: 0;
@@ -38,4 +42,16 @@ img{
 .flex-coin{
   display: flex;
   align-items: center;
+}
+
+.bg-data{
+    font-size: .8rem;
+}
+
+
+#time-data{
+  border: solid magenta;
+  font-size: 4rem;
+  right: 50;
+  transform: translateY(50);
 }
