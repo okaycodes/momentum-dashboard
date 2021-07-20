@@ -12,17 +12,17 @@ const bgLocationEl = document.getElementById('bg-location')
 const weatherIconEl = document.getElementById('weather-icon')
 const weatherLocationEl = document.getElementById('weather-location')
 const weatherDescriptionEl = document.getElementById('weather-desc')
-const quotesEl = document.getElementById('quotes')
+const quoteEl = document.getElementById('quote')
 let weatherLocation = "Lagos"
 
 
 
 
 function getBackground(){
-  fetch("https://apis.scrimba.ocom/unsplash/photos/random?orientation=landscape&query=nature")
+  fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
     .then(response => response.json())
     .then(data => {
-      const url = data.urls.full
+      const url = data.urls.regular
       const img = new Image()
       img.src =  url
       img.onload = function () {
@@ -65,7 +65,7 @@ async function getCoin(){
     coinDataEl.innerHTML = html
     coinIdEl.textContent = `${data.id}`
     dogecoinEl.appendChild(coinDataEl)
-    currentTime()
+    let timeInterval = setInterval(currentTime, 1000)
   }
 }
 
@@ -73,7 +73,10 @@ async function getCoin(){
 function currentTime(){
   date = new Date()
   let time = document.createElement('p')
-  time.textContent = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+  let options1 = { hour: 'numeric', minute: 'numeric', hour12: true }
+  let options2 = { timeStyle: 'medium'}
+  time.textContent = date.toLocaleString('en-US', options1 )
+  timeEl.removeChild(timeEl.firstChild)
   timeEl.appendChild(time)
 }
 
@@ -91,7 +94,7 @@ function getWeather(){
           weatherIconEl.innerHTML = ""
           weatherIconEl.appendChild(img)
           weatherIconEl.appendChild(tempEl)
-          weatherLocationEl.textContent = `Location: ${weatherLocation}`
+          weatherLocationEl.textContent = weatherLocation
           weatherDescriptionEl.textContent =  data.weather[0].description
         }
       })
@@ -140,19 +143,8 @@ fetch("https://api.quotable.io/random")
       let quoteCaptionEl = document.createElement('figcaption')
       let seeMoreEl = document.createElement('span')
       blockquoteEl.cite = "https://api.quotable.io/random"
-      blockquoteEl.textContent = `${data.content.slice(0, 100)}...`
-      seeMoreEl.textContent = 'click to see full quote'
+      blockquoteEl.textContent = `${data.content}`
       quoteCaptionEl.textContent = `-${data.author}`
-      quotesEl.appendChild(blockquoteEl)
-      quotesEl.appendChild(seeMoreEl)
-
-      seeMoreEl.addEventListener('click', function(){
-        blockquoteEl.removeChild(blockquoteEl)
-        blockquoteEl.removeChild(seeMoreEl)
-        blockquoteEl.textContent = `${data.content}`
-        seeMoreEl.textContent = 'see less'
-        blockquoteEl.appendChild(blockquoteEl)
-        blockquoteEl.appendChild(quoteCaptionEl)
-        blockquoteEl.appendChild(seeLessEl)
-      })
+      quoteEl.appendChild(blockquoteEl)
+      quoteEl.appendChild(quoteCaptionEl)
     })
