@@ -12,13 +12,14 @@ const bgLocationEl = document.getElementById('bg-location')
 const weatherIconEl = document.getElementById('weather-icon')
 const weatherLocationEl = document.getElementById('weather-location')
 const weatherDescriptionEl = document.getElementById('weather-desc')
+const quotesEl = document.getElementById('quotes')
 let weatherLocation = "Lagos"
 
 
 
 
 function getBackground(){
-  fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
+  fetch("https://apis.scrimba.ocom/unsplash/photos/random?orientation=landscape&query=nature")
     .then(response => response.json())
     .then(data => {
       const url = data.urls.full
@@ -124,3 +125,31 @@ function hideBar(){
     }
   })
 }
+
+
+
+// quotes
+
+fetch("https://api.quotable.io/random")
+    .then(response => response.json())
+    .then(data => {
+      let blockquoteEl = document.createElement('blockquote')
+      let quoteCaptionEl = document.createElement('figcaption')
+      let seeMoreEl = document.createElement('span')
+      blockquoteEl.cite = "https://api.quotable.io/random"
+      blockquoteEl.textContent = `${data.content.slice(0, 100)}...`
+      seeMoreEl.textContent = 'click to see full quote'
+      quoteCaptionEl.textContent = `-${data.author}`
+      quotesEl.appendChild(blockquoteEl)
+      quotesEl.appendChild(seeMoreEl)
+
+      seeMoreEl.addEventListener('click', function(){
+        blockquoteEl.removeChild(blockquoteEl)
+        blockquoteEl.removeChild(seeMoreEl)
+        blockquoteEl.textContent = `${data.content}`
+        seeMoreEl.textContent = 'see less'
+        blockquoteEl.appendChild(blockquoteEl)
+        blockquoteEl.appendChild(quoteCaptionEl)
+        blockquoteEl.appendChild(seeLessEl)
+      })
+    })
