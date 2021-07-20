@@ -50,7 +50,10 @@ getBackground()
 
 
 async function getCoin(){
-  const response = await fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
+  const coinArr = ['bitcoin', 'dogecoin', 'ethereum', 'litecoin', 'cardano']
+  let randomCoin = coinArr[Math.floor(Math.random()*coinArr.length)]
+  const response = await fetch(`https://api.coingecko.com/api/v3/coins/${randomCoin}`)
+  console.log(randomCoin)
   const data = await response.json()
   const imgUrl = data.image.thumb
   coinImgEl.src = imgUrl
