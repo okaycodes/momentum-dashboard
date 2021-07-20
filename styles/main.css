@@ -86,12 +86,12 @@ input{
   border: none;
   border-bottom: solid 2px grey;
   border-radius: 5px;
-  background-color: rgba(128, 128, 128, 0.1);
+  background-color: rgba(128, 128, 128, 0.35);
 }
 
 input:focus{
   outline: none;
-  background-color: rgba(128, 128, 128, 0.4);
+  background-color: rgba(128, 128, 128, 0.55);
 }
 
 .top{
