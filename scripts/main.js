@@ -16,7 +16,6 @@ let weatherLocation = "Lagos"
 
 
 
-
 function getBackground(){
   fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
     .then(response => response.json())
