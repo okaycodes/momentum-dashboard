@@ -1,7 +1,7 @@
-const getID = (id) => document.getElementById(id)
+const get = (id) => document.getElementById(id)
 
-const bodyEl = document.getElementById('body')
-const timeEl = document.getElementById('time-data')
+const bodyEl = get('body')
+const timeEl = get('time-data')
 const inputEl = document.getElementById('input')
 const coinIdEl = document.getElementById('coin-id')
 const weatherEl = document.getElementById('weather')
