@@ -1,3 +1,4 @@
+const getID = (id) => document.getElementById(id)
 
 const bodyEl = document.getElementById('body')
 const timeEl = document.getElementById('time-data')
