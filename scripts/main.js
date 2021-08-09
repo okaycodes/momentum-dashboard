@@ -11,8 +11,8 @@ const settingsEl = get('settings')
 const bgCreatorEl = get('bg-creator')
 const bgLocationEl = get('bg-location')
 const weatherIconEl = get('weather-icon')
-const weatherLocationEl = document.getElementById('weather-location')
-const weatherDescriptionEl = document.getElementById('weather-desc')
+const weatherLocationEl = get('weather-location')
+const weatherDescriptionEl = get('weather-desc')
 let weatherLocation = "Lagos"
 
 
