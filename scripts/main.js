@@ -13,7 +13,7 @@ const bgLocationEl = get('bg-location')
 const weatherIconEl = get('weather-icon')
 const weatherLocationEl = get('weather-location')
 const weatherDescriptionEl = get('weather-desc')
-let weatherLocation = "Lagos"
+let weatherLocation = "Abuja"
 
 
 
