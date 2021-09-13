@@ -29,7 +29,6 @@ function getBackground(){
           bodyEl.style.backgroundImage = `url(${url})`
           bgCreatorEl.textContent = `Pic by: ${data.user.name}`
           bgLocationEl.textContent = `Location: ${data.location.name}`
-          getCoin()
       }
     }).catch( err => {
       console.log(err)
@@ -40,7 +39,6 @@ function getBackground(){
           bodyEl.style.backgroundImage = `url(${url})`
           bgCreatorEl.textContent = `Pic by: Karsten Würth`
           bgLocationEl.textContent = `Location: Alsheim, Germany`
-          getCoin()
       }
     })
 }
