@@ -30,6 +30,7 @@ function getBackground(){
           bgCreatorEl.textContent = `Pic by: ${data.user.name}`
           bgLocationEl.textContent = `Location: ${data.location.name}`
           currentTime()
+          getQuotes()
       }
     }).catch( err => {
       console.log(err)
@@ -41,6 +42,7 @@ function getBackground(){
           bgCreatorEl.textContent = `Pic by: Karsten Würth`
           bgLocationEl.textContent = `Location: Alsheim, Germany`
           currentTime()
+          getQuotes()
       }
     })
 }
@@ -95,6 +97,22 @@ function getWeather(){
 
 getWeather()
 
+
+function getQuotes(){
+  fetch("https://api.quotable.io/random")
+      .then(response => response.json())
+      .then(data => {
+        quoteEl.innerHTML = ""
+        let blockquoteEl = document.createElement('blockquote')
+        let quoteCaptionEl = document.createElement('figcaption')
+        let seeMoreEl = document.createElement('span')
+        blockquoteEl.cite = "https://api.quotable.io/random"
+        blockquoteEl.textContent = `${data.content}`
+        quoteCaptionEl.textContent = `-${data.author}`
+        quoteEl.appendChild(blockquoteEl)
+        quoteEl.appendChild(quoteCaptionEl)
+      })
+}
 
 settingsEl.addEventListener('click', function(){
   if(inputEl.style.display === "none"){
