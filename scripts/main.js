@@ -29,6 +29,7 @@ function getBackground(){
           bodyEl.style.backgroundImage = `url(${url})`
           bgCreatorEl.textContent = `Pic by: ${data.user.name}`
           bgLocationEl.textContent = `Location: ${data.location.name}`
+          currentTime()
       }
     }).catch( err => {
       console.log(err)
@@ -39,6 +40,7 @@ function getBackground(){
           bodyEl.style.backgroundImage = `url(${url})`
           bgCreatorEl.textContent = `Pic by: Karsten Würth`
           bgLocationEl.textContent = `Location: Alsheim, Germany`
+          currentTime()
       }
     })
 }
@@ -60,7 +62,6 @@ async function getCoin(){
     coinDataEl.innerHTML = html
     coinIdEl.textContent = `${data.id}`
     dogecoinEl.appendChild(coinDataEl)
-    currentTime()
   }
 }
 
