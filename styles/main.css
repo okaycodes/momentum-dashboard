@@ -61,6 +61,11 @@ img{
     font-size: .8rem;
 }
 
+.center{
+  align-self: center;
+  text-align: center;
+}
+
 
 #time-data{
   display: flex;
