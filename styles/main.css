@@ -137,3 +137,10 @@ input:focus{
 #settings:hover{
   cursor: pointer;
 }
+
+#quote{
+  max-width: 550px;
+  line-height: 1.2;
+  text-shadow: 0 0 7px grey;
+  font-weight: 400;
+}
