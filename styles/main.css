@@ -77,7 +77,7 @@ img {
 
 input {
   width: 85%;
-  display: none;
+  display: block;
   color: #f0f0f0;
   margin-top: 0;
   padding: 3px;
