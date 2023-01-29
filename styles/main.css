@@ -2,15 +2,16 @@
     GLOBAL
   ==========*/
 
-*{
-   box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 
-body{
+body {
   color: white;
+  font-size: 0.8rem;
   font-weight: 300;
   font-family: sans-serif;
-  line-height: 1.0;
+  line-height: 1;
   text-shadow: 0px 0px 7px black;
   margin: auto;
   background-repeat: no-repeat;
@@ -19,12 +20,11 @@ body{
   height: 100vh;
 }
 
-p{
+p {
   margin: 0;
 }
 
-
-ul{
+ul {
   font-size: 0.8rem;
   margin-top: 0;
   list-style: none;
@@ -32,55 +32,50 @@ ul{
   font-weight: 400;
 }
 
-li{
+li {
   margin-bottom: 0.5em;
 }
 
-img{
+img {
   width: 18px;
   display: block;
   margin-bottom: 0;
   margin-right: 9px;
   display: block;
 }
-.flex-container{
+.flex-container {
   height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.flex-coin{
+.flex-coin {
   font-size: 0.8rem;
   display: flex;
   align-items: center;
   margin-bottom: 0.5em;
 }
 
-.bg-data{
-    font-size: .8rem;
+.bg-data {
+  font-size: 0.8rem;
 }
 
-.center{
+.center {
   align-self: center;
   text-align: center;
 }
 
-
-#time-data{
+#time-data {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  /* border: solid magenta; */
   margin-top: -10%;
-  align-self: center;
   font-size: 6.5rem;
   right: 50;
 }
 
-
-
-input{
+input {
   width: 85%;
   display: none;
   color: #f0f0f0;
@@ -94,56 +89,56 @@ input{
   background-color: rgba(128, 128, 128, 0.35);
 }
 
-input:focus{
+input:focus {
   outline: none;
   background-color: rgba(128, 128, 128, 0.55);
 }
 
-.top{
+.top {
   margin: 0 auto;
   width: 98%;
   display: flex;
   justify-content: space-between;
 }
 
-#weather{
-  font-size: 0.8rem;
+#weather {
+  /* font-size: 0.8rem; */
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-start;
 }
 
-#weather-icon{
+#weather-icon {
   display: flex;
   align-items: center;
 }
 
-#weather-icon p{
+#weather-icon p {
   margin-bottom: 3px;
 }
 
-#weather-icon img{
+#weather-icon img {
   width: 26px;
   margin: 0;
 }
 
-.weather-settings{
+.weather-settings {
   display: flex;
 }
 
-#settings{
+#settings {
   padding: 0 2px;
   background-color: rgba(128, 128, 128, 0.4);
   border-radius: 2px;
   box-shadow: 0 0 2px;
 }
 
-#settings:hover{
+#settings:hover {
   cursor: pointer;
 }
 
-#quote{
+#quote {
   max-width: 550px;
   line-height: 1.2;
   text-shadow: 0 0 7px grey;

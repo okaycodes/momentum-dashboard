@@ -1,39 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title></title>
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="main.css" />
   </head>
   <body id="body">
     <div class="flex-container">
       <div class="top">
-        <div id="dogecoin-data">
+        <div class="coin">
           <div class="flex-coin">
-            <img id="coin-img" src="" alt="">
+            <img id="coin-img" src="" alt="" />
             <span id="coin-id"></span>
           </div>
+          <ul id="coin-data"></ul>
         </div>
         <div id="weather">
           <div id="weather-icon"></div>
           <div id="weather-desc"></div>
-          <div class="weather-settings"><p id="weather-location"></p><p id="settings">⚙</p></div>
-          <input id ="input" type="text" placeholder="Enter City e.g. New York">
+          <div class="weather-settings">
+            <p id="weather-location"></p>
+            <p id="settings">⚙</p>
+          </div>
+          <input
+            id="input"
+            type="text"
+            placeholder="Enter City e.g. New York"
+          />
         </div>
       </div>
-
       <div class="center">
-        <div id="time-data">
-        </div>
-        <figure id="quote">
-
-        </figure>
+        <div id="time-data"></div>
+        <figure id="quote"></figure>
       </div>
+
       <div class="bg-data">
         <p id="bg-creator"></p>
         <p id="bg-location"></p>
       </div>
     </div>
-    <script src="scripts/main.js" charset="utf-8"></script>
+    <script src="main.js" charset="utf-8"></script>
   </body>
 </html>
