@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "momentum dashboard clone",
+  "description": "a clone of the  momentum dashboard",
+  "version": "1.1",
+  "icons": {
+    "48": "favicon.png"
+  },
+
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  }
+}

@@ -14,15 +14,58 @@ const weatherDescriptionEl = document.getElementById("weather-desc");
 const quoteEl = document.getElementById("quote");
 let weatherLocation = "Lagos";
 
+const imageData = [
+  {
+    src: "../images/bg0-karsten-wurth.jpg",
+    alt_description: "",
+    by: "Karsten Wurth",
+    link: "https://unsplash.com/photos/rafblRbne3o",
+    location: "Alsheim, Germany",
+  },
+
+  {
+    src: "../images/bg1-quinsey-sablan.jpg",
+    alt_description: "white petaled flowers on field at golden hour",
+    by: "Quinsey Sablan",
+    link: "https://unsplash.com/photos/auXdimpx7K8",
+    location: "null",
+  },
+
+  {
+    src: "../images/bg2-poppy-pack.jpg",
+    alt_description: "",
+    by: "Poppy Pack",
+    link: "https://unsplash.com/photos/jAVlGc_mUW4",
+    location: "null",
+  },
+  {
+    src: "../images/bg3-fred-tromp.jpg",
+    alt_description: "white star of Betlehem flowers closeup photography",
+    by: "Fred Tromp",
+    link: "https://unsplash.com/photos/KJzSDPYTvn0",
+    location: "'Greyton, South Africa'",
+  },
+  {
+    scrimbaId: "",
+    src: "../images/bg4-sergie-a.jpg",
+    alt_description: "",
+    by: "Sergi A.",
+    link: "https://unsplash.com/photos/-heLWtuAN3c",
+    location: "null",
+  },
+];
+
 function getBackground() {
   fetch(
     "https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=flowers"
   )
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
       const url = data.urls.regular;
       const img = new Image();
       img.src = url;
+      img.alt = data.alt_description;
       img.onload = function () {
         bodyEl.style.backgroundImage = `url(${url})`;
         bgCreatorEl.textContent = `Pic by: ${data.user.name}`;
@@ -33,17 +76,13 @@ function getBackground() {
     })
     .catch((err) => {
       console.log(err);
-      const url =
-        "https://images.unsplash.com/photo-1486673748761-a8d18475c757?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyMTEwMjl8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjY2ODUzODQ&ixlib=rb-1.2.1&q=85";
-      const img = new Image();
-      img.src = url;
-      img.onload = function () {
-        bodyEl.style.backgroundImage = `url(${url})`;
-        bgCreatorEl.textContent = `Pic by: Karsten Würth`;
-        bgLocationEl.textContent = `Location: Alsheim, Germany`;
-        getCoin();
-        getQuotes();
-      };
+      const randomIndex = Math.floor(Math.random() * imageData.length);
+      const randomImage = imageData[randomIndex];
+      bodyEl.style.backgroundImage = `url(${randomImage.src})`;
+      bgCreatorEl.textContent = `Pic by: ${randomImage.by}`;
+      bgLocationEl.textContent = `Location: ${randomImage.location}`;
+      getCoin();
+      getQuotes();
     });
 }
 let interval = setInterval(getBackground, 300000);
